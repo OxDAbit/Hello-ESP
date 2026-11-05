@@ -1,0 +1,10 @@
+# Configuración común de la placa ESP32-S3-N16R8 (16 MB de flash, 8 MB de PSRAM octal).
+# La cargan todos los proyectos de src/ desde su CMakeLists.txt (SDKCONFIG_DEFAULTS).
+# Solo se aplica al generar el sdkconfig de un proyecto: si ya existe, bórralo o haz un Full Clean.
+
+# Flash de 16 MB
+CONFIG_ESPTOOLPY_FLASHSIZE_16MB=y
+
+# PSRAM octal de 8 MB
+CONFIG_SPIRAM=y
+CONFIG_SPIRAM_MODE_OCT=y

@@ -2,7 +2,7 @@
 
 <p align="center">
   Lee la dirección MAC Wi-Fi de una placa ESP32, la que usa ESP-NOW para identificar cada nodo<br>
-  <sub>by <a href="https://oxdabit.com"><img src="../../../../assets/oxdabit.png" alt="" width="16" height="16"> <b>0xDA</b> bit</a></sub>
+  <sub>by <a href="https://oxdabit.com"><img src="../../assets/oxdabit.png" alt="" width="16" height="16"> <b>0xDA</b> bit</a></sub>
 </p>
 
 <p align="center">
@@ -11,6 +11,8 @@
 </p>
 
 ESP-NOW no usa direcciones IP ni nombres: cada placa se identifica por su **MAC Wi-Fi en modo estación (STA)**. Antes de enviar nada de una placa a otra hay que conocer la MAC del destino, y este programa es el primer paso: la lee y la imprime en el monitor serie.
+
+Es un proyecto independiente: se usa para preparar el proyecto [ESP-NOW](../ESP-Now/), pero no depende de él y sirve para cualquier otro que necesite la MAC de una placa.
 
 La MAC STA se calcula a partir de la MAC base que Espressif graba de fábrica en los eFuses del chip, así que se puede leer sin arrancar el Wi-Fi.
 
@@ -21,19 +23,20 @@ Al arrancar, el programa muestra además los datos de la placa (chip, revisión,
 - Placa **ESP32-S3-N16R8** (16 MB de flash y 8 MB de PSRAM octal).
 - Cable USB-C de datos.
 
-El código funciona en cualquier chip de la familia ESP32. Para otra placa, cambia el *target* con `idf.py set-target <chip>` y ajusta o quita la línea `SDKCONFIG_DEFAULTS` del `CMakeLists.txt`, que carga la configuración de memoria de la N16R8.
+El código funciona en cualquier chip de la familia ESP32. Para otra placa, cambia el *target* con `idf.py set-target <chip>` y ajusta o borra `sdkconfig.defaults`, que tiene la configuración de memoria de la N16R8.
 
 ## Estructura
 
 ```text
 mac-detection/
-├── CMakeLists.txt      proyecto ESP-IDF; carga ../sdkconfig.n16r8
+├── CMakeLists.txt          proyecto ESP-IDF
+├── sdkconfig.defaults      configuración de la placa (chip, flash y PSRAM)
 └── main/
-    ├── CMakeLists.txt  código y componentes que usa
-    └── main.cpp        el programa
+    ├── CMakeLists.txt      código y componentes que usa
+    └── main.cpp            el programa
 ```
 
-La configuración de la placa está en [`../sdkconfig.n16r8`](../sdkconfig.n16r8), compartida con el resto de proyectos de `src/`, que usan la misma placa.
+La configuración de la placa está en [`sdkconfig.defaults`](sdkconfig.defaults). Solo se aplica al generar el `sdkconfig`: si lo cambias, haz un **Full Clean** para que se vuelva a aplicar.
 
 ## Compilar y grabar
 
@@ -67,13 +70,13 @@ La última línea está en formato de array de C, lista para copiarla en el cód
 | --- | --- |
 | No aparece ningún puerto nuevo al conectar la placa | Cable de solo carga, o prueba el otro USB-C. |
 | «Failed to connect» al grabar | Pon la placa en modo descarga: mantén BOOT, pulsa y suelta RST, suelta BOOT. |
-| `Flash` o `PSRAM` no coinciden con tu placa | Revisa `../sdkconfig.n16r8` y haz un **Full Clean** para que se vuelva a aplicar. |
+| `Flash` o `PSRAM` no coinciden con tu placa | Revisa `sdkconfig.defaults` y haz un **Full Clean** para que se vuelva a aplicar. |
 | El monitor no muestra nada | Pulsa RST con el monitor abierto. |
 
 ---
 
 <p align="center">
-  <a href="https://oxdabit.com"><img src="../../../../assets/oxdabit.png" alt="Isotipo de 0xDA bit" width="56" height="56"></a>
+  <a href="https://oxdabit.com"><img src="../../assets/oxdabit.png" alt="Isotipo de 0xDA bit" width="56" height="56"></a>
 </p>
 
 <p align="center">
