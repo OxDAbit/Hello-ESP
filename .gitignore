@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+
+# Archivos temporales
+tmp/
+
+# Material de consulta personal (no se sube)
+doc/
+
+# Scripts y archivos privados (no se suben)
+private/

@@ -1,0 +1,22 @@
+{
+	"idf.currentSetup": "/Users/oxda_bit/.espressif/v6.1/esp-idf",
+	"idf.extensionActivationMode": "always",
+	"C_Cpp.intelliSenseEngine": "disabled",
+	"clangd.path": "/Users/oxda_bit/.espressif/tools/esp-clangd/esp-21.1.3_20260408/esp-clangd/bin/clangd",
+	"clangd.arguments": [
+		"--background-index",
+    "--query-driver=**",
+    "--compile-commands-dir=/Users/oxda_bit/Documents/dev.software/github_repository/Hello-ESP/build"
+	],
+	"cmake.configureOnOpen": false,
+	"cmake.configureOnEdit": false,
+	"cmake.automaticReconfigure": false,
+	"cmake.sourceDirectory": "/Users/oxda_bit/Documents/dev.software/github_repository/Hello-ESP/projects/led-onboard-ESP32-S3-N16R8",
+	"idf.port": "/dev/cu.usbmodem14101",
+	"idf.openOcdConfigs": [
+		"board/esp32s3-builtin.cfg"
+	],
+	"idf.customExtraVars": {
+		"OPENOCD_USB_ADAPTER_LOCATION": "20-1"
+	}
+}

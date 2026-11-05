@@ -1,0 +1,12 @@
+# Configuración de la placa ESP32-S3-N16R8 (16 MB de flash, 8 MB de PSRAM octal).
+# Solo se aplica al generar el sdkconfig: si ya existe, bórralo o haz un Full Clean.
+
+# Chip ESP32-S3
+CONFIG_IDF_TARGET="esp32s3"
+
+# Flash de 16 MB
+CONFIG_ESPTOOLPY_FLASHSIZE_16MB=y
+
+# PSRAM octal de 8 MB
+CONFIG_SPIRAM=y
+CONFIG_SPIRAM_MODE_OCT=y

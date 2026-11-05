@@ -1,0 +1,11 @@
+menu "Ejemplo LED integrado"
+
+    config LED_GPIO
+        int "GPIO del LED RGB (WS2812)"
+        range 0 48
+        default 48
+        help
+            Pin del LED RGB integrado. En la ESP32-S3-DevKitC-1 v1.0 y en la
+            mayoría de clones N16R8 es el GPIO48; en la v1.1, el GPIO38.
+
+endmenu
